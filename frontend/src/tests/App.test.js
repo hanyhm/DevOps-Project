@@ -7,7 +7,7 @@ import {
 import "@testing-library/jest-dom/extend-expect";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import App from "./App";
+import App from "../components/App";
 
 const movies = [
   { _id: 1, title: "Movie 1" },
