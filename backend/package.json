@@ -6,7 +6,7 @@
   "scripts": {
     "db:up": "migrate-mongo up",
     "start": "nodemon --ignore './tests' index.js",
-    "test": "jest --watchAll --colors"
+    "test": "jest --watchAll=false --passWithNoTests"
   },
   "keywords": [],
   "author": "",
