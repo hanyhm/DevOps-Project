@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}  # Set the AWS region here
 
     steps:
     - uses: actions/checkout@v2
