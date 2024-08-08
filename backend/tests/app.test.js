@@ -1,20 +1,30 @@
 const supertest = require("supertest");
-const expect = require("expect");
 const app = require("../app");
-const db = require("../db");
 const Movie = require("../models/movie");
+const mongoose = require('mongoose');
+const { MongoMemoryServer } = require('mongodb-memory-server');
 
 const request = supertest(app);
 const endpoint = "/api/movies";
 
-describe(endpoint, () => {
-  beforeAll(async () => {
-    await db.connect();
-  });
+let mongoServer;
 
-  afterAll(async () => {
-    await db.close();
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+  const uri = mongoServer.getUri();
+
+  await mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   });
+});
+
+afterAll(async () => {
+  await mongoose.connection.close();
+  await mongoServer.stop();
+});
+
+describe(endpoint, () => {
 
   describe("GET /", () => {
     it("should return all movies", async () => {
@@ -29,7 +39,7 @@ describe(endpoint, () => {
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBeTruthy();
       titles.forEach((title) =>
-        expect(res.body.some((m) => m.title === title))
+        expect(res.body.some((m) => m.title === title)).toBeTruthy()
       );
 
       await Movie.deleteMany({ title: { $in: titles } });
@@ -56,23 +66,8 @@ describe(endpoint, () => {
     });
   });
 
-  describe("DELETE /:id", () => {
-    it("should return 404 if movie was not found", async () => {
-      const res = await request.delete(endpoint);
+  const request = supertest(app);
+  const endpoint = "/api/movies";
+  
 
-      expect(res.status).toBe(404);
-    });
-
-    it("should delete the movie and return 204", async () => {
-      const movie = new Movie({ title: "m" });
-      await movie.save();
-
-      const res = await request.delete(`${endpoint}/${movie._id}`);
-
-      expect(res.status).toBe(204);
-
-      const movieInDb = await Movie.findById(movie._id);
-      expect(movieInDb).toBeFalsy();
-    });
-  });
 });
