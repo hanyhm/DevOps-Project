@@ -100,3 +100,13 @@ The DevOps pipeline consists of the following stages:
 
 This DevOps Pipeline Showcase Project demonstrates the ability to design, implement, and manage
 a modern, cloud-native application lifecycle.
+
+## 6. How to use this Project
+
+1- Clone the project repo.
+
+```sh
+git clone https://github.com/hanyhm/DevOps-Project.git
+```
+
+2- Prepare your own repo. on GiyHub and add the following Secretes:
