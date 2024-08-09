@@ -1,17 +1,17 @@
-FROM node:14.16.0-alpine3.13
+FROM node:14.16.0-buster
 
 # Install dependencies required for MongoDB
-RUN apk add --no-cache bash g++ gcc libgcc linux-headers make python3 openssl curl
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  python3 \
+  curl
 
-RUN addgroup app && adduser -S -G app app
+RUN addgroup --system app && adduser --system --ingroup app app
 USER app
 
 WORKDIR /app
 COPY package*.json ./
-
-# Run npm install
 RUN npm install
-
 COPY . . 
 EXPOSE 3001
 CMD ["npm", "start"]
