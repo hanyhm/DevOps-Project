@@ -50,7 +50,7 @@ jobs:
     - name: Build, tag, and push frontend image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: vidly-frontend
+        ECR_REPOSITORY: b1y8e9y4/vidly-frontend
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./frontend
@@ -59,7 +59,7 @@ jobs:
     - name: Build, tag, and push backend image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: vidly-backend
+        ECR_REPOSITORY: b1y8e9y4/vidly-backend
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./backend
