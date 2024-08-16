@@ -14,8 +14,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      AWS_REGION: ${{ secrets.AWS_REGION }}  
-
+      AWS_REGION: ${{ secrets.AWS_REGION }}    
+    services:
+      mongodb:
+        image: mongo:4.4
+        ports:
+          - 27017:27017
     steps:
     - uses: actions/checkout@v3
     
