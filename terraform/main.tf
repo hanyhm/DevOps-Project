@@ -135,7 +135,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "mongodb" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-  key_name      = "AKIAY6UYYAYYPSR7H653"  # Make sure to replace this with your actual key pair name
+  key_name      = "AKIAY6UYYAYYIP4R6VPF"  # Make sure to replace this with your actual key pair name
 
   vpc_security_group_ids = [aws_security_group.mongodb_sg.id]
   subnet_id              = aws_subnet.vidly_subnet[0].id
