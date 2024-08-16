@@ -81,32 +81,39 @@ The DevOps pipeline consists of the following stages:
 - Rapid and reliable deployments
 - Improved visibility into application and infrastructure performance
 
-## 4. Success Criteria
+## 4. How to use this Project
 
-- Successful implementation of the entire pipeline
-- Ability to deploy code changes to production within 1 hour of commit
-- Zero downtime during deployments
-- Automated rollback in case of deployment failures
-- Real-time monitoring with actionable alerts
-
-## 5. Deliverables
-
-1. Fully functional CI/CD pipeline
-2. Infrastructure as Code scripts (Terraform)
-3. Configuration management playbooks (Ansible)
-4. Kubernetes deployment manifests
-5. Monitoring dashboards and alert configurations
-6. Comprehensive documentation including setup guide and architecture overview
-
-This DevOps Pipeline Showcase Project demonstrates the ability to design, implement, and manage
-a modern, cloud-native application lifecycle.
-
-## 6. How to use this Project
-
-1- Clone the project repo.
+1- Clone the project repo. to get the source code locally.
 
 ```sh
 git clone https://github.com/hanyhm/DevOps-Project.git
 ```
 
-2- Prepare your own repo. on GiyHub and add the following Secretes:
+2- Install and configure Amazon CLI
+
+```bash
+$ sudo apt-get install python3-pip
+$ sudo apt install pipx
+$ pipx install awscli
+$ pipx ensurepath
+
+$ aws configure
+$ AWS Access Key ID [None]: // Input your aws access key
+$ AWS Secret Access Key [None]: // Input your secret access key
+$ Default region name [None]: us-east-1
+$ Default output format [None]: json
+```
+
+3- Test the CI Cycle
+a. Create <a href="https://github.com">GitHub</a>repo and upload the project source code.
+b. Upload the source code to your repo.
+c. Go to the repo. settings and add the following parameters:
+```bash
+AWS_ACCESS_KEY_ID = "your_access_key"
+AWS_SECRET_ACCESS_KEY = "your_secret_key"
+AWS_REGION = "your_region"
+ECR_REGISTRY = "your ecr registry"
+
+
+
+
