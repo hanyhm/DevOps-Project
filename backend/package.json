@@ -19,7 +19,6 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "migrate-mongo": "^8.1.4",
-    "mongodb-memory-server": "^10.0.0",
     "nodemon": "^2.0.7",
     "supertest": "^6.1.3"
   },
