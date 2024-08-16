@@ -72,16 +72,7 @@ The DevOps pipeline consists of the following stages:
    - Grafana visualizes performance data
    - Alerts sent for any issues
 
-## 3. Benefits
-
-- Faster time-to-market for new features
-- Improved code quality through automated testing
-- Consistent and reproducible environments
-- Efficient resource utilization
-- Rapid and reliable deployments
-- Improved visibility into application and infrastructure performance
-
-## 4. How to use this Project
+## 3. How to use this Project
 
 1- Clone the project repo. to get the source code locally.
 
@@ -105,14 +96,19 @@ $ Default output format [None]: json
 ```
 
 3- Test the CI Cycle
-a. Create <a href="https://github.com">GitHub</a>repo and upload the project source code.
-b. Upload the source code to your repo.
-c. Go to the repo. settings and add the following parameters:
+   a. Create <a href="https://github.com">GitHub</a> repo. and upload the project source code.
+   b. Upload the source code to your repo.
+   c. Go to the repo. settings and add the following parameters:
+
 ```bash
 AWS_ACCESS_KEY_ID = "your_access_key"
 AWS_SECRET_ACCESS_KEY = "your_secret_key"
 AWS_REGION = "your_region"
 ECR_REGISTRY = "your ecr registry"
+```
+
+
+
 
 
 
